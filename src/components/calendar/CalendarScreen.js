@@ -54,9 +54,8 @@ export const CalendarScreen = () => {
     }
   }
 
-  const onSelectSlot = (e) => {
-    console.log(e)
-    // dispatch( eventClearNoteActive() );
+  const onSelectSlot = () => {
+    dispatch( eventClearNoteActive() );
   }
 
   return (
