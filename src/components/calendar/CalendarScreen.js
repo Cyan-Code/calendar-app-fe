@@ -12,9 +12,10 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 
 import 'moment/locale/es'
 import { uiOpenModal } from '../../actions/ui';
-import { eventClearNoteActive, eventSetActive } from '../../actions/events';
+import { eventClearNoteActive, eventSetActive, eventStartLoading } from '../../actions/events';
 import { AddNewFab } from '../ui/AddNewFab';
 import { DeleteEventFab } from '../ui/DeleteEventFab';
+import { useEffect } from 'react';
 moment.locale('es')
 
 const localizer = momentLocalizer(moment);
@@ -27,6 +28,10 @@ export const CalendarScreen = () => {
   const {activeEvent} = useSelector(state => state.calendar)
   
   const [lastView, setLastView] = useState( localStorage.getItem('lastView') || 'month' )
+
+  useEffect(() => {
+    dispatch( eventStartLoading() )
+  }, [dispatch])
 
   const onDoubleClick = (e) => {
     dispatch( uiOpenModal() )
