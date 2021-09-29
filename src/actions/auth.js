@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
 import { fetchConToken, fetchSinToken } from "../components/helpers/fetch"
 import { types } from "../types/types";
+import { eventClearNoteActive, eventsClear } from "./events";
 
 
 
@@ -71,6 +72,8 @@ export const startLogOut = () => {
   return (dispatch) => {
     localStorage.clear()
     dispatch( logOut() )
+    dispatch( eventClearNoteActive() )
+    dispatch( eventsClear() )
   } 
 }
 
