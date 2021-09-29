@@ -19,7 +19,7 @@ const fetchConToken = ( endPoint, data, method='GET' ) => {
   const token = localStorage.getItem('token') || '';
 
   if(method === 'GET') {
-    return fetch({
+    return fetch(url, {
       method,
       headers: {
         'x-token': token
@@ -41,4 +41,3 @@ export {
   fetchSinToken,
   fetchConToken
 }
-
